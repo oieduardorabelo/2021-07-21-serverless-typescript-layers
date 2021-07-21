@@ -1,0 +1,43 @@
+service: serverless-framework-lambda-layer
+
+frameworkVersion: '2.46'
+
+package:
+  patterns:
+    - '!package-lock.json'
+    - '!package.json'
+
+plugins:
+  - serverless-esbuild
+
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  lambdaHashingVersion: 20201221
+  stage: dev
+  region: ap-southeast-2
+
+functions:
+  Index:
+    handler: ./handlers/index.handler
+    events:
+      - http: GET /
+    layers:
+      - !Ref SharedLambdaLayer
+  About:
+    handler: ./handlers/about.handler
+    events:
+      - http: GET /about
+  People:
+    handler: ./handlers/people.handler
+    events:
+      - http: GET /people/:name
+      
+layers:
+  Shared:
+    path: layers/shared
+    name: shared-${sls:stage}
+    compatibleRuntimes:
+      - nodejs14.x
+    retain: false

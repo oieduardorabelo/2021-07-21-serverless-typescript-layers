@@ -1,0 +1,13 @@
+{
+  "name": "serverless-framework-lambda-layer",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {},
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.79",
+    "@types/node": "^16.4.0",
+    "serverless": "^2.46.0",
+    "serverless-esbuild": "^1.16.1",
+    "typescript": "^4.3.5"
+  }
+}
