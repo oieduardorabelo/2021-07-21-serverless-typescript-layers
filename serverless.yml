@@ -2,11 +2,6 @@ service: serverless-framework-lambda-layer
 
 frameworkVersion: '2.46'
 
-package:
-  patterns:
-    - '!package-lock.json'
-    - '!package.json'
-
 plugins:
   - serverless-esbuild
 
